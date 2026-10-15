@@ -1,17 +1,29 @@
+# Build
 target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
+!.mvn/wrapper/maven-wrapper.jar
 .mvn/timing.properties
-# https://maven.apache.org/tools/wrapper/#Usage_with_or_without_Binary_JAR
-.mvn/wrapper/maven-wrapper.jar
 
-# Eclipse m2e generated files
-# Eclipse Core
+# IDE
+.idea/
+*.iml
+.vscode/
 .project
-# JDT-specific (Eclipse Java Development Tools)
 .classpath
+.settings/
+
+# OS
+.DS_Store
+
+# Secrets and local config
+.env
+*.env.local
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!example.tfvars
+
+# Logs
+*.log

@@ -1,0 +1,30 @@
+### Register an invoice
+POST http://localhost:8080/invoices
+Content-Type: application/json
+
+{
+  "debtor": "Jane Example",
+  "amount": 150.00,
+  "currency": "EUR"
+}
+
+> {% client.global.set("invoiceId", response.body.id); %}
+
+### Get the invoice just created
+GET http://localhost:8080/invoices/{{invoiceId}}
+
+### Invalid request -> 400 Problem Details
+POST http://localhost:8080/invoices
+Content-Type: application/json
+
+{
+  "debtor": "",
+  "amount": -1,
+  "currency": "euro"
+}
+
+### Unknown invoice -> 404
+GET http://localhost:8080/invoices/00000000-0000-0000-0000-000000000000
+
+### Health
+GET http://localhost:8080/actuator/health

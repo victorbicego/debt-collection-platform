@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: collections
+      POSTGRES_USER: collections
+      POSTGRES_PASSWORD: collections
+    ports:
+      - "5432:5432"
+    volumes:
+      # Since PostgreSQL 18 the volume is mounted at /var/lib/postgresql
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U collections -d collections"]
+      interval: 5s
+      retries: 10
+
+volumes:
+  pgdata:
