@@ -6,6 +6,8 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -27,6 +29,8 @@ public class Invoice {
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal amount;
 
+    // ISO 4217 code, always 3 letters: stored as CHAR(3) (see V1 migration)
+    @JdbcTypeCode(SqlTypes.CHAR)
     @Column(nullable = false, length = 3)
     private String currency;
 
