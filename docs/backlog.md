@@ -40,6 +40,7 @@ Goal: a single, well-tested service that handles invoices, opens collection case
 | P1-11 | No N+1 queries | 6, 7 | SQL logging shows a fixed number of queries for the search and the history endpoints; a test asserts the query count. | ⬜ |
 | P1-12 | Architecture rules | 5, 4 | ArchUnit tests: domain does not depend on web or persistence; controllers do not use repositories directly. | ⬜ |
 | P1-13 | Mutation testing on the domain | 5 | PIT runs on the domain package; mutation score recorded in the README; surviving mutants either killed or explained. | ⬜ |
+| P1-17 | Quality gate with SonarQube Cloud | 5, 18 | Analysis runs on every push and PR ([runbook](runbooks/sonarqube-cloud.md)); JaCoCo coverage visible in SonarQube Cloud; the quality gate is a required check before merging into `main`; badges in the README. | ⬜ |
 | P1-14 | Profile and fix one hotspot | 2 | JFR recording under load (e.g. with k6 or Gatling) of the search endpoint; one measured improvement documented with before/after numbers. | ⬜ |
 | P1-15 | Zero-downtime column rename | 7 | Rename `debtor` text to a proper reference using expand-contract across 3 migrations; app works between each step. | ⬜ |
 | P1-16 | Phase wrap-up | 24 | ADR 0002 decided; C4 container diagram updated; README updated; tag `v0.1.0`. | ⬜ |

@@ -1,6 +1,8 @@
 # Debt Collection Platform
 
 [![CI](https://github.com/victorbicego/debt-collection-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/victorbicego/debt-collection-platform/actions/workflows/ci.yml)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=victorbicego_debt-collection-platform&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=victorbicego_debt-collection-platform)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=victorbicego_debt-collection-platform&metric=coverage)](https://sonarcloud.io/summary/new_code?id=victorbicego_debt-collection-platform)
 
 A simplified debt collection and payments platform, built as a learning project in backend architecture.
 It is a single system that grows with each phase of my study plan — the companion notes and exercises live in

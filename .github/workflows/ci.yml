@@ -8,18 +8,32 @@ on:
 jobs:
   invoices:
     runs-on: ubuntu-latest
+    env:
+      # Empty until the secret is created (see docs/runbooks/sonarqube-cloud.md); the analysis step is then skipped.
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     defaults:
       run:
         working-directory: services/invoices
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0   # full history: SonarQube Cloud needs it to tell new code from old code
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '25'
           cache: maven
+      - name: Cache SonarQube Cloud packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
       # Testcontainers uses the Docker engine that comes with the GitHub runner
-      - name: Build and test
+      - name: Build and test (with coverage)
         run: ./mvnw -B verify
+      - name: SonarQube Cloud analysis
+        if: env.SONAR_TOKEN != ''
+        run: ./mvnw -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
       - name: Build Docker image
         run: docker build -t invoices:${{ github.sha }} .
