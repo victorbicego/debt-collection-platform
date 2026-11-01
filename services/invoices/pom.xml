@@ -19,7 +19,7 @@
 
     <properties>
         <java.version>25</java.version>
-        <jacoco.version>0.8.15</jacoco.version>
+        <jacoco.version>0.8.16</jacoco.version>
         <sonar-maven-plugin.version>5.8.0.7211</sonar-maven-plugin.version>
 
         <!-- SonarQube Cloud: must match the organization and project key shown on sonarcloud.io -->
